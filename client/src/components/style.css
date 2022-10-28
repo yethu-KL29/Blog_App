@@ -1,0 +1,18 @@
+.button{
+  color: aliceblue;
+  font-weight: 900;
+  font-size: medium;
+}
+.tool{
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.typo{
+    font-weight: 900;
+
+}
+.button:hover{
+    background-color: rgb(61, 57, 191);
+}
