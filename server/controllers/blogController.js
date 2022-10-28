@@ -1,4 +1,6 @@
+const { default: mongoose } = require("mongoose");
 const Blog = require("../models/Blog");
+const User = require("../models/User");
 
 const getBlogs = async(req,res,next)=>{
     let blogs;
@@ -17,7 +19,11 @@ const getBlogs = async(req,res,next)=>{
 const addBlog=async(req,res,next)=>{
     const{title,description,image,user}=req.body;
     let blogs;
-
+    let existingUser;
+    existingUser = await User.findById(user)
+    if(!existingUser){
+        return res.status(404).json({message:"user not avail"})
+    }
     blogs = new Blog({
         title,
         description,
@@ -25,9 +31,15 @@ const addBlog=async(req,res,next)=>{
         user,
     })
     try {
-        await blogs.save();
+        const session = await mongoose.startSession()
+        session.startTransaction();
+        await blogs.save({session});
+        existingUser.blogs.push(blogs)
+        await existingUser.save({session})
+        await session.commitTransaction();
     } catch (error) {
         console.log(error)
+        return res.status(404).json({message:"error"})
     }
     return res.status(200).json({blogs})
 }
@@ -67,7 +79,9 @@ const deleteBlog=async(req,res,next)=>{
   const id =req.params.id;
   let blogs;
   try {
-    blogs = await Blog.findByIdAndDelete(id)
+    blogs = await Blog.findByIdAndDelete(id).populate('user')
+    await blogs.user.blogs.pull(blogs)
+    await blogs.user.save()
   } catch (error) {
     console.log(error);
   }
