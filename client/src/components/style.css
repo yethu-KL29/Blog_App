@@ -1,8 +1,5 @@
-.button{
-  color: aliceblue;
-  font-weight: 900;
-  font-size: medium;
-}
+
+
 .tool{
     display: flex;
     justify-content: space-between;
@@ -13,6 +10,31 @@
     font-weight: 900;
 
 }
-.button:hover{
-    background-color: rgb(61, 57, 191);
+
+.type{
+    font-weight: 900;
+
+}
+.box{
+    display: flex;
+    gap: 15px;
+}
+.form{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    box-shadow: 10px 10px 5px #6262d4;
+    height: 500px;
+    background: rgba(27, 23, 107, 0.363);
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    
 }

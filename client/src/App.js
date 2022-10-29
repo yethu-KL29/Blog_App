@@ -4,7 +4,7 @@ import AddBlog from './components/AddBlog';
 import Blog from './components/Blog';
 import BlogDetails from './components/BlogDetails';
 import Header from './components/Header';
-import Login from './components/Login';
+import Auth from './components/Auth';
 import UserBlog from './components/UserBlog';
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
    
     <Header/>
     <Routes>
-      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/login' element={<Auth/>}></Route>
+      <Route path='/signup' element={<Auth/>}></Route>
       <Route path='/blogs' element={<Blog/>}></Route>
       <Route path='/MyBlogs' element={<UserBlog/>}></Route>
       <Route path='/MyBlogs/:id' element={<BlogDetails/>}></Route>
