@@ -50,6 +50,7 @@ const login=async(req,res,next)=>{
     try {
          existingUser=await User.findOne({email})
     } catch (error) {
+       
         console.log(error)
     }
     if(!existingUser){
@@ -57,7 +58,7 @@ const login=async(req,res,next)=>{
     }
     const isPasswordCorrect = bcrypt.compareSync(password,existingUser.password);
     if(isPasswordCorrect){
-        return res.status(200).json({message:"successfully loggedin"})
+        return res.status(200).json({message:"successfully loggedin",user:existingUser} )
     }
     return res.status(404).json({message:"passwors is incorrect"})
 }

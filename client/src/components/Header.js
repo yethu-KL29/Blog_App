@@ -5,8 +5,10 @@ import './style.css';
 import {Tab,Tabs} from '@mui/material';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../store';
 function Header() {
+  const dispatch=useDispatch()
   const [value, setvalue] = useState()
   const isLoggedIn=useSelector(state=>state.isLoggedIn);
   console.log(isLoggedIn)
@@ -19,13 +21,14 @@ function Header() {
              setvalue(val)
         }}>
           <Tab LinkComponent={Link} to="/blogs" label= 'All Blogs'/>
-          <Tab LinkComponent={Link} to="/MyBlog" label='My Blogs'/>
+          <Tab LinkComponent={Link} to="/MyBlogs" label='My Blogs'/>
+          <Tab LinkComponent={Link} to="/blogs/add" label='Add Blogs'/>
         </Tabs>
         <Box className='box'>
-         { !isLoggedIn &&  <><Button LinkComponent={Link} to="/login" variant='contained'>Login</Button>
+         {!isLoggedIn &&  <><Button LinkComponent={Link} to="/login" variant='contained'>Login</Button>
             <Button LinkComponent={Link} to="/signup" variant='contained'>SignUp</Button>
             </>}
-        {isLoggedIn &&   <Button LinkComponent={Link} to="/logout" variant='contained'>Logout</Button>}
+        {isLoggedIn && <Button onClick={()=>dispatch(authActions.logout())} LinkComponent={Link} to="/login" variant='contained'>Logout</Button>}
 
         </Box>
     </Toolbar>
