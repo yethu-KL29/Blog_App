@@ -54,12 +54,17 @@ ul{
     align-items: center;
     
 }
-.cards{
+
+img{
+    width: 250px;
+}
+.blog{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     padding: 10px;
     height: 400px;
     width: 250px;
     box-shadow: 5px 5px 10px rgb(226, 197, 92);
-}
-img{
-    width: 250px;
 }

@@ -4,7 +4,9 @@ import React from 'react'
 import './style.css'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function AddBlog() {
+  const navigate = useNavigate()
   const [input, setinput] = useState({
     title:'',description:'',image:''
   })
@@ -17,7 +19,7 @@ function AddBlog() {
  const handleSubmit=(e)=>{
   e.preventDefault()
   console.log(input)
-  sendRequest().then((data)=>console.log(data.blogs))
+  sendRequest().then((data)=>console.log(data.blogs)).then(()=>navigate("/MyBlogs"))
   
  }
  const sendRequest=async()=>{
@@ -51,12 +53,12 @@ function AddBlog() {
           
           }}/>
           <InputLabel>Description</InputLabel>
-          <TextField onChange={handleChange} name='description'sx={{
+          <TextField onChange={handleChange} value={input.decription} name='description'sx={{
             height:100,
             width:500
           }}/>
           <InputLabel>Image_Url</InputLabel>
-          <TextField onChange={handleChange} name='image' sx={{
+          <TextField onChange={handleChange}  value={input.image} name='image' sx={{
             height:100,
             width:500
           }}/>

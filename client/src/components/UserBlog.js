@@ -24,7 +24,7 @@ function UserBlog() {
       <ul>
       {blogs && blogs.map((blog,i)=>{
         return(
-        <ShowBlogs blog={blog}/>
+        <ShowBlogs blog={blog} isUser={true}/>
         )
       })}
       </ul>

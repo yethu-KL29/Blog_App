@@ -20,13 +20,13 @@ function Header() {
         <Tabs textColor='inherit' value={value} onChange={(e,val)=>{
              setvalue(val)
         }}>
-          <Tab LinkComponent={Link} to="/blogs" label= 'All Blogs'/>
+       {isLoggedIn&&  <> <Tab LinkComponent={Link} to="/blogs" label= 'All Blogs'/>
           <Tab LinkComponent={Link} to="/MyBlogs" label='My Blogs'/>
-          <Tab LinkComponent={Link} to="/blogs/add" label='Add Blogs'/>
+          <Tab LinkComponent={Link} to="/blogs/add" label='Add Blogs'/></>}
         </Tabs>
         <Box className='box'>
-         {!isLoggedIn &&  <><Button LinkComponent={Link} to="/login" variant='contained'>Login</Button>
-            <Button LinkComponent={Link} to="/signup" variant='contained'>SignUp</Button>
+         {!isLoggedIn &&  <><Button LinkComponent={Link} to="/auth" variant='contained'>Login</Button>
+            <Button LinkComponent={Link} to="/auth" variant='contained'>SignUp</Button>
             </>}
         {isLoggedIn && <Button onClick={()=>dispatch(authActions.logout())} LinkComponent={Link} to="/login" variant='contained'>Logout</Button>}
 

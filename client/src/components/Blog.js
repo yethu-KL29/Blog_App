@@ -21,9 +21,12 @@ function Blog() {
     <div>
       <ul>
     {blogs && blogs.map((blog,i)=>{
+      
+    
       return(
-    <ShowBlogs blog={blog}/>
-      )
+      
+    <ShowBlogs blog={blog}  isUser={localStorage.getItem("userId")==(blog.user._id)}/>
+    )
        } )}
        </ul>
     </div>
