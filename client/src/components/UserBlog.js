@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import './style.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import ShowBlogs from './ShowBlogs'
 function UserBlog() {
   const [blogs, setblogs] = useState()
   const id = localStorage.getItem("userId")
@@ -19,11 +21,13 @@ function UserBlog() {
 
   return (
     <div>
+      <ul>
       {blogs && blogs.map((blog,i)=>{
         return(
-          <h2>{blog.title}</h2>
+        <ShowBlogs blog={blog}/>
         )
       })}
+      </ul>
     </div>
   )
 }

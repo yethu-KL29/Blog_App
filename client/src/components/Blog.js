@@ -19,11 +19,13 @@ function Blog() {
   return (
    
     <div>
+      <ul>
     {blogs && blogs.map((blog,i)=>{
       return(
     <ShowBlogs blog={blog}/>
       )
        } )}
+       </ul>
     </div>
   )
   }

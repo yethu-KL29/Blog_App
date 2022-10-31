@@ -45,4 +45,21 @@ form{
    
    
 }
-
+ul{
+    display: flex;
+    gap:30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+.cards{
+    padding: 10px;
+    height: 400px;
+    width: 250px;
+    box-shadow: 5px 5px 10px rgb(226, 197, 92);
+}
+img{
+    width: 250px;
+}
