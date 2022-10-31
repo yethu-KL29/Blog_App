@@ -1,36 +1,20 @@
-import { Avatar, Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material'
 import React from 'react'
-
+import './style.css'
 function ShowBlogs(props) {
     const{title,description,image,user} =props.blog
+    console.log(description)
   return (
-    <Card sx={{ maxWidth: 345 }}>
-    <CardHeader
-      avatar={
-        <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">
-          {user.name}
-        </Avatar>
-      }
+    <div className='cards'>
+    <h2>{title}</h2>
+    <img src={image} ></img>
+    <h2>{description}</h2>
+    <h3> {user.name}</h3>
     
-      title={title}
-      subheader="September 14, 2016"
-    />
-    <CardMedia
-      component="img"
-      height="194"
-      image={image}
-      alt="Paella dish"
-    />
-      
-      <CardContent>
-        <Typography paragraph>Method:</Typography>
-        <Typography paragraph>
-          {description}
-        </Typography>
-        
-      </CardContent>
-   
-  </Card>
+
+    {/* <Button><Link to = {`/books/${_id}`}>Update</Link></Button>
+    <Button onClick={Deletehandler}>Delete</Button>  */}
+
+    </div>
   )
 }
 
